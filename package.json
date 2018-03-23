@@ -33,12 +33,9 @@
     "typecheck:coverage":
       "flow-coverage-report -t text -t html -i 'src/**/*.js' -x 'src/**/*.{spec,story}.js'",
     "validate": "run-s lint typecheck",
-    "test": "BABEL_ENV=cjsm,cssm,cssglobal jest",
-    "test:cover": "run-s 'test -- --coverage'",
-    "test:ci":
-      "NODE_ENV=ci run-s validate 'test -- --coverage --runInBand --no-watchman'",
     "pretest:ci": "rm -rf reports/",
     "styleguide": "start-storybook -p 9001 -c .storybook",
+    "deploy": "storybook-to-ghpages",
     "clean": "rm -r dist/ coverage/ reports/ flow-coverage/",
     "build:js:esm":
       "BABEL_ENV=cssm babel src/ -d dist/esm --ignore '*.spec.js,*.story.js'",
@@ -50,7 +47,7 @@
     "prebuild": "rm -rf dist/",
     "postbuild": "rm -rf tmp/",
     "prepare": "run-s build",
-    "prepublishOnly": "run-s validate test:cover"
+    "prepublishOnly": "run-s validate"
   },
   "babel": {
     "presets": ["./babel.config.js"]
@@ -75,6 +72,7 @@
     "@storybook/addon-options": "^3.3.15",
     "@storybook/addons": "^3.3.15",
     "@storybook/react": "^3.3.15",
+    "@storybook/storybook-deployer": "^2.3.0",
     "autoprefixer": "^8.1.0",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.2.2",

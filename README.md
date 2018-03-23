@@ -1,5 +1,7 @@
 # ReactConfirmDecorator
 
+[demo](https://uraway.github.io/react-confirm-decorator)
+
 ## Install
 
 ```
@@ -45,7 +47,7 @@ Create confirm function:
 // utils/confim.js
 import { createConfirm } from 'react-confirm-decorator';
 
-import ConfirmationModal from './ConfirmationModal';
+import ConfirmationModal from './components/ConfirmationModal';
 
 const confirm = props => createConfirm(ConfirmationModal, props);
 
