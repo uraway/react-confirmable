@@ -1,6 +1,6 @@
 {
   "name": "react-confirm-decorator",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "ReactConfirmDecorator",
   "keywords": [
     "react",
@@ -56,7 +56,9 @@
       "./babel.config.js"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.42"
+  },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.42",
     "@babel/core": "^7.0.0-beta.42",
@@ -108,7 +110,6 @@
     "webpack": "^4.1.1"
   },
   "peerDependencies": {
-    "@babel/runtime": "^7.0.0-beta.42",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   }
