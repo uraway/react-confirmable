@@ -23,25 +23,27 @@
     "url": "git://github.com/uraway/react-confirm-decorator.git"
   },
   "license": "Unlicense",
-  "files": ["dist", "index.js", "README.md", "UNLICENSE"],
+  "files": [
+    "dist",
+    "index.js",
+    "README.md",
+    "UNLICENSE"
+  ],
   "main": "dist/cjsm/index.js",
   "module": "dist/esm/index.js",
   "scripts": {
     "lint:js": "eslint src/",
     "lint": "run-s lint:*",
     "typecheck": "flow check src/",
-    "typecheck:coverage":
-      "flow-coverage-report -t text -t html -i 'src/**/*.js' -x 'src/**/*.{spec,story}.js'",
+    "typecheck:coverage": "flow-coverage-report -t text -t html -i 'src/**/*.js' -x 'src/**/*.{spec,story}.js'",
     "validate": "run-s lint typecheck",
     "pretest:ci": "rm -rf reports/",
     "styleguide": "start-storybook -p 9001 -c .storybook",
     "deploy": "storybook-to-ghpages",
     "clean": "rm -r dist/ coverage/ reports/ flow-coverage/",
-    "build:js:esm":
-      "BABEL_ENV=cssm babel src/ -d dist/esm --ignore '*.spec.js,*.story.js'",
+    "build:js:esm": "BABEL_ENV=cssm babel src/ -d dist/esm --ignore '*.spec.js,*.story.js'",
     "build:js:cjsm": "BABEL_ENV=cjsm babel dist/esm -d dist/cjsm",
-    "build:flow":
-      "flow-copy-source -v -i '**/*.{story,spec}.js' src/ dist/cjsm",
+    "build:flow": "flow-copy-source -v -i '**/*.{story,spec}.js' src/ dist/cjsm",
     "build:css:global": "BABEL_ENV=cssm,cssglobal babel src/ -d tmp/",
     "build": "run-s build:**",
     "prebuild": "rm -rf dist/",
@@ -50,7 +52,9 @@
     "prepublishOnly": "run-s validate"
   },
   "babel": {
-    "presets": ["./babel.config.js"]
+    "presets": [
+      "./babel.config.js"
+    ]
   },
   "dependencies": {},
   "devDependencies": {
@@ -63,7 +67,6 @@
     "@babel/preset-env": "^7.0.0-beta.42",
     "@babel/preset-flow": "^7.0.0-beta.42",
     "@babel/preset-react": "^7.0.0-beta.42",
-    "@babel/runtime": "^7.0.0-beta.42",
     "@storybook/addon-a11y": "^3.3.15",
     "@storybook/addon-actions": "^3.3.15",
     "@storybook/addon-console": "^1.0.0",
@@ -105,6 +108,7 @@
     "webpack": "^4.1.1"
   },
   "peerDependencies": {
+    "@babel/runtime": "^7.0.0-beta.42",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   }
