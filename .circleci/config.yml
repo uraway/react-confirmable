@@ -46,6 +46,25 @@ jobs:
             npx wait-on tcp:6006
             yarn cypress run
 
+  deploy:
+    docker:
+      - image: cimg/node:16.2.0
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-version: v2
+          cache-path: |
+            - node_modules
+             - ~/.cache/yarn
+             - ~/.cache/Cypress
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
@@ -54,5 +73,10 @@ workflows:
   sample:
     jobs:
       - build-and-test
+      # - deploy:
+      #     branches:
+      #       only: /master/
+      #     requires:
+      #       - build-and-test
       # For running simple node tests, you could optionally use the node/test job from the orb to replicate and replace the job above in fewer lines.
       # - node/test
