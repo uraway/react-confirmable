@@ -10,60 +10,72 @@ yarn add react-confirm-decorator
 
 ## Usage
 
-Create Modal Component:
-
 ```javascript
-// components/ConfirmationModal.js
-import React from 'react';
-import Modal from 'react-bootstrap/lib/Modal';
-import Button from 'react-bootstrap/lib/Button';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import {
+  setConfirm,
+  WrappedComponentProps,
+  createConfirm,
+} from 'react-confirm-decorator';
+import { ReactNode } from 'react';
 
-import { setConfirm } from 'react-confirm-decorator';
+type Props = {
+  title: string,
+  body: ReactNode,
+};
 
-// show, confirm, abort are reserved props
-const ConfirmationModal = ({ show, confirm, abort, title, body }) => (
-  <div className="static-modal">
-    <Modal show={show} onHide={abort} backdrop>
-      <Modal.Header>
-        <Modal.Title>{title}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>{body}</Modal.Body>
-      <Modal.Footer>
-        <Button onClick={abort}>Cancel</Button>
-        <Button className="button-l" bsStyle="primary" onClick={confirm}>
-          Confirm
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  </div>
+const BaseModal = ({
+  show,
+  confirm,
+  abort,
+  title,
+  body,
+}: Props & WrappedComponentProps) => (
+  <Dialog open={show} onClose={abort}>
+    <DialogTitle>{title}</DialogTitle>
+    <DialogContent>
+      <DialogContentText>{body}</DialogContentText>
+    </DialogContent>
+    <DialogActions>
+      <Button onClick={abort} color="secondary">
+        Cancel
+      </Button>
+      <Button onClick={confirm} color="primary">
+        Confirm
+      </Button>
+    </DialogActions>
+  </Dialog>
 );
 
-export default setConfirm(ConfirmationModal);
-```
+const ConfirmationModal = setConfirm(BaseModal);
 
-Create confirm function:
+export const confirm = (props: Props) => {
+  return createConfirm(ConfirmationModal, props);
+};
 
-```javascript
-// utils/confim.js
-import { createConfirm } from 'react-confirm-decorator';
+import Button from '@material-ui/core/Button';
+import { confirm } from './confirm';
+import { useState } from 'react';
 
-import ConfirmationModal from './components/ConfirmationModal';
-
-const confirm = props => createConfirm(ConfirmationModal, props);
-
-export default confirm;
-```
-
-Use confirm:
-
-```javascript
-import confirm from './utils/confirm';
-
-async function handleClick(confirm) {
-  const isConfirmed = await confirm({
-    title: 'CAUTION',
-    body: 'Are you sure?',
-  });
-  console.log(isConfirmed); // boolean
-}
+export const Sample = () => {
+  const [value, setValue] = useState(false);
+  const handleClick = async () => {
+    const isConfirmed = await confirm({
+      title: 'Title',
+      body: 'Body',
+    });
+    setValue(isConfirmed);
+  };
+  return (
+    <div>
+      <Button onClick={handleClick}>Confirm</Button>
+      <label style={{ margin: '2rem' }}>isConfirmed: {String(value)}</label>
+    </div>
+  );
+};
 ```

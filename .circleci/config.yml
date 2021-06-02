@@ -1,22 +1,21 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. 
+# Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
 orbs:
   # The Node.js orb contains a set of prepackaged CircleCI configuration you can utilize
-  # Orbs reduce the amount of configuration required for common tasks. 
+  # Orbs reduce the amount of configuration required for common tasks.
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/node
-  node: circleci/node@4.1
-
+  node: circleci/node@4.5.0
 
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-  build-and-test:  
+  build-and-test:
     # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/node
     docker:
-      - image: cimg/node:15.1
+      - image: cimg/node:16.2.0-browsers
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
@@ -24,21 +23,60 @@ jobs:
       - checkout
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
       # The orb install-packages step will also automatically cache them for faster future runs.
-      - node/install-packages
+      # - node/install-packages
       # If you are using yarn instead npm, remove the line above and uncomment the two lines below.
-      # - node/install-packages:
-      #     pkg-manager: yarn 
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-version: v2
+          cache-path: |
+            - node_modules
+             - ~/.cache/yarn
+             - ~/.cache/Cypress
       - run:
-          name: Run tests
-          command: npm test
+          name: Run lint
+          command: yarn lint
+      - run:
+          name: Run storybook
+          background: true
+          command: |
+            yarn storybook
+      - run:
+          name: Run cypress
+          command: |
+            npx wait-on tcp:6006
+            yarn cypress run
+
+  deploy:
+    docker:
+      - image: cimg/node:16.2.0
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-version: v2
+          cache-path: |
+            - node_modules
+             - ~/.cache/yarn
+             - ~/.cache/Cypress
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
 
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
   # CircleCI will run this workflow on every commit.
   # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
-  sample: 
+  sample:
     jobs:
       - build-and-test
+      # - deploy:
+      #     branches:
+      #       only: /master/
+      #     requires:
+      #       - build-and-test
       # For running simple node tests, you could optionally use the node/test job from the orb to replicate and replace the job above in fewer lines.
       # - node/test
