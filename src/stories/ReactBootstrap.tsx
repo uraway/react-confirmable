@@ -23,8 +23,10 @@ const BaseModal = ({
       </Modal.Header>
       <Modal.Body>{body}</Modal.Body>
       <Modal.Footer>
-        <Button onClick={abort}>Cancel</Button>
-        <Button className="button-l" onClick={confirm}>
+        <Button id="cancel" onClick={abort}>
+          Cancel
+        </Button>
+        <Button id="confirm" className="button-l" onClick={confirm}>
           Confirm
         </Button>
       </Modal.Footer>

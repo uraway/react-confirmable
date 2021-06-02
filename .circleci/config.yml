@@ -31,8 +31,15 @@ jobs:
           name: Run lint
           command: yarn lint
       - run:
-          name: Run tests
-          command: yarn test
+          name: Run storybook
+          background: true
+          command: |
+            yarn storybook
+      - run:
+          name: Run cypress
+          command: |
+            wait-on tcp:6006
+            yarn cypress run
 
 workflows:
   # Below is the definition of your workflow.

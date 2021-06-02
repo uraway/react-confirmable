@@ -25,10 +25,10 @@ const BaseModal = ({
       <DialogContentText>{body}</DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button onClick={abort} color="secondary">
+      <Button id="cancel" onClick={abort} color="secondary">
         Cancel
       </Button>
-      <Button onClick={confirm} color="primary">
+      <Button id="confirm" onClick={confirm} color="primary">
         Confirm
       </Button>
     </DialogActions>

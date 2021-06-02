@@ -16,8 +16,12 @@ export const Sample: FC = () => {
   };
   return (
     <div>
-      <Button onClick={handleClick}>Confirm</Button>
-      <label style={{ margin: '2rem' }}>isConfirmed: {String(value)}</label>
+      <Button id="toggle" onClick={handleClick}>
+        Confirm
+      </Button>
+      <label id="label" style={{ margin: '2rem' }}>
+        isConfirmed: {String(value)}
+      </label>
     </div>
   );
 };
