@@ -3,4 +3,4 @@ node_modules
 .eslintcache
 coverage
 reports
-flow-coverage
+storybook-static
