@@ -16,8 +16,9 @@ export type WrappedComponentProps = {
 };
 
 export function setConfirm(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   WrappedComponent: ComponentType<any & WrappedComponentProps>
-) {
+): typeof WrappedComponent {
   return class extends Component<Props, State> {
     constructor(props: Props) {
       super(props);
@@ -44,13 +45,12 @@ export function setConfirm(
 
     render() {
       const { show } = this.state;
-      const { resolve, cleanup, ...others } = this.props;
       return (
         <WrappedComponent
           show={show}
           abort={this.abort}
           confirm={this.confirm}
-          {...others}
+          {...this.props}
         />
       );
     }

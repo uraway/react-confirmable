@@ -6,7 +6,7 @@ type Props = {
   cleanup: () => void;
 };
 
-export function createConfirm<T = {}>(
+export function createConfirm<T>(
   Component: ComponentType<Props>,
   props: T
 ): Promise<boolean> {
