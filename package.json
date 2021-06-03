@@ -23,6 +23,7 @@
   ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
   "scripts": {
     "lint": "yarn prettier:check && yarn eslint:check",
     "prettier:check": "prettier --check src",
