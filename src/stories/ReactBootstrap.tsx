@@ -1,6 +1,10 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { setConfirm, WrappedComponentProps, createConfirm } from '..';
+import {
+  withConfirmation,
+  WrappedComponentProps,
+  createConfirmation,
+} from '..';
 import { ReactNode } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -34,8 +38,8 @@ const BaseModal = ({
   </div>
 );
 
-const ConfirmationModal = setConfirm(BaseModal);
+const ConfirmationModal = withConfirmation(BaseModal);
 
 export const confirm = (props: Props): Promise<boolean> => {
-  return createConfirm(ConfirmationModal, props);
+  return createConfirmation(ConfirmationModal, props);
 };

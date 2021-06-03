@@ -15,7 +15,7 @@ export type WrappedComponentProps = {
   confirm: () => void;
 };
 
-export function setConfirm(
+export function withConfirmation(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   WrappedComponent: ComponentType<any & WrappedComponentProps>
 ): typeof WrappedComponent {
