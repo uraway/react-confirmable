@@ -11,6 +11,7 @@ export const Sample: FC = () => {
       body: 'Body',
     });
     setValue(isConfirmed);
+    console.log(isConfirmed);
   };
   return (
     <div>

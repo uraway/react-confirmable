@@ -4,7 +4,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { setConfirm, WrappedComponentProps, createConfirm } from '..';
+import {
+  withConfirmation,
+  WrappedComponentProps,
+  createConfirmation,
+} from '..';
 import { ReactNode } from 'react';
 
 type Props = {
@@ -35,8 +39,8 @@ const BaseModal = ({
   </Dialog>
 );
 
-const ConfirmationModal = setConfirm(BaseModal);
+const ConfirmationModal = withConfirmation(BaseModal);
 
 export const confirm = (props: Props): Promise<boolean> => {
-  return createConfirm(ConfirmationModal, props);
+  return createConfirmation(ConfirmationModal, props);
 };
