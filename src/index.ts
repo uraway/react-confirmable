@@ -1,2 +1,2 @@
 export * from './withConfirmation';
-export * from './createConfirm';
+export * from './createConfirmation';
