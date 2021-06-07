@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 import { Button } from 'react-bootstrap';
-import { confirm } from './ReactBootstrap';
+import { confirmation } from './ReactBootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FC, useState } from 'react';
@@ -8,7 +8,7 @@ import { FC, useState } from 'react';
 export const Sample: FC = () => {
   const [value, setValue] = useState(false);
   const handleClick = async () => {
-    const isConfirmed = await confirm({
+    const isConfirmed = await confirmation({
       title: 'Title',
       body: 'Body',
     });
@@ -20,9 +20,9 @@ export const Sample: FC = () => {
       <Button id="toggle" onClick={handleClick}>
         Confirm
       </Button>
-      <label id="label" style={{ margin: '2rem' }}>
-        isConfirmed: {String(value)}
-      </label>
+      <div id="result" style={{ margin: '2rem' }}>
+        {value && 'Confirmed!!'}
+      </div>
     </div>
   );
 };

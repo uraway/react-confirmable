@@ -37,10 +37,15 @@ const BaseModal = ({
           <ModalCloseButton />
           <ModalBody>{body}</ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={abort}>
+            <Button id="cancel" colorScheme="blue" mr={3} onClick={abort}>
               Close
             </Button>
-            <Button colorScheme="blue" variant="ghost" onClick={confirm}>
+            <Button
+              id="confirm"
+              colorScheme="blue"
+              variant="ghost"
+              onClick={confirm}
+            >
               Confirm
             </Button>
           </ModalFooter>
@@ -52,6 +57,6 @@ const BaseModal = ({
 
 const ConfirmationModal = withConfirmation(BaseModal);
 
-export const confirm = (props: Props): Promise<boolean> => {
+export const confirmation = (props: Props): Promise<boolean> => {
   return createConfirmation(ConfirmationModal, props);
 };

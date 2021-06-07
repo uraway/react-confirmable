@@ -53,6 +53,6 @@ const BaseModal = ({
 
 const ConfirmationModal = withConfirmation(BaseModal);
 
-export const confirm = (props: Props): Promise<boolean> => {
+export const confirmation = (props: Props): Promise<boolean> => {
   return createConfirmation(ConfirmationModal, props);
 };
