@@ -60,7 +60,7 @@
     "@typescript-eslint/parser": "4.26.0",
     "babel-loader": "8.2.2",
     "bootstrap": "5.0.1",
-    "cypress": "7.4.0",
+    "cypress": "7.5.0",
     "eslint": "7.28.0",
     "eslint-import-resolver-typescript": "2.4.0",
     "eslint-plugin-import": "2.23.4",
