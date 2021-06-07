@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react';
 import Button from '@material-ui/core/Button';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { confirm, createTheme } from './MaterialUI';
+import { confirmation, createTheme } from './MaterialUI';
 import { FC, useState } from 'react';
 import { CssBaseline, useMediaQuery } from '@material-ui/core';
 
@@ -16,7 +16,7 @@ export const Sample: FC = () => {
   };
 
   const handleClick = async () => {
-    const isConfirmed = await confirm({
+    const isConfirmed = await confirmation({
       title: 'Title',
       body: 'Body',
       themeType,
@@ -30,9 +30,9 @@ export const Sample: FC = () => {
       <Button id="toggle" onClick={handleClick}>
         Confirm
       </Button>
-      <label id="label" style={{ margin: '2rem' }}>
-        isConfirmed: {String(value)}
-      </label>
+      <div id="result" style={{ margin: '2rem' }}>
+        {value && 'Confirmed!!'}
+      </div>
       <Button onClick={toggleThemeModal}>
         Switch to {themeType === 'dark' ? 'light' : 'dark'}
       </Button>

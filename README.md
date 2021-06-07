@@ -1,6 +1,23 @@
 # ReactConfirmDecorator
 
-[demo](https://uraway.github.io/react-confirm-decorator)
+[![npm version](https://badge.fury.io/js/react-confirm-decorator.svg)](https://badge.fury.io/js/react-confirm-decorator) [![uraway](https://circleci.com/gh/uraway/react-confirm-decorator.svg?style=svg)](https://app.circleci.com/pipelines/github/uraway/react-confirm-decorator)
+
+**High Order Component for Beautiful React Dialog**
+
+This enables any React Dialog component to be callable.
+
+## Demo
+
+![Jun-07-2021 4-58-12 PM](https://user-images.githubusercontent.com/15242484/120980676-cf8a0580-c7b1-11eb-8747-359894ada0c2.gif)
+
+```js
+const isConfirmed = await confirmation({
+  title: 'Title',
+  body: 'Body',
+});
+```
+
+https://uraway.github.io/react-confirm-decorator
 
 ## Install
 
@@ -8,21 +25,23 @@
 yarn add react-confirm-decorator
 ```
 
-## Usage
+## How to make your Dialog component to be callable
 
-```javascript
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import {
-  setConfirm,
-  WrappedComponentProps,
-  createConfirm,
-} from 'react-confirm-decorator';
+1. Create your Dialog component:
+
+`WrappedComponentProps` has following properties:
+
+- show: if `true`, modal will open
+- confirm: callback function which closes modal, returns `true`
+- abort: callback function which closes modal, returns `false`
+
+```js
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import { ReactNode } from 'react';
+import { WrappedComponentProps } from 'react-confirm-decorator';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 type Props = {
   title: string,
@@ -36,46 +55,50 @@ const BaseModal = ({
   title,
   body,
 }: Props & WrappedComponentProps) => (
-  <Dialog open={show} onClose={abort}>
-    <DialogTitle>{title}</DialogTitle>
-    <DialogContent>
-      <DialogContentText>{body}</DialogContentText>
-    </DialogContent>
-    <DialogActions>
-      <Button onClick={abort} color="secondary">
-        Cancel
-      </Button>
-      <Button onClick={confirm} color="primary">
-        Confirm
-      </Button>
-    </DialogActions>
-  </Dialog>
+  <div className="static-modal">
+    <Modal show={show} onHide={abort} backdrop>
+      <Modal.Header>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{body}</Modal.Body>
+      <Modal.Footer>
+        <Button id="cancel" onClick={abort}>
+          Cancel
+        </Button>
+        <Button id="confirm" className="button-l" onClick={confirm}>
+          Confirm
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  </div>
 );
+```
 
-const ConfirmationModal = setConfirm(BaseModal);
+2. Wrap your Dialog component with `withConfirmation`:
 
-export const confirm = (props: Props) => {
-  return createConfirm(ConfirmationModal, props);
-};
+```js
+import { withConfirmation } from 'react-confirm-decorator';
 
-import Button from '@material-ui/core/Button';
-import { confirm } from './confirm';
-import { useState } from 'react';
+const ConfirmationModal = withConfirmation(BaseModal);
+```
 
-export const Sample = () => {
-  const [value, setValue] = useState(false);
-  const handleClick = async () => {
-    const isConfirmed = await confirm({
-      title: 'Title',
-      body: 'Body',
-    });
-    setValue(isConfirmed);
-  };
-  return (
-    <div>
-      <Button onClick={handleClick}>Confirm</Button>
-      <label style={{ margin: '2rem' }}>isConfirmed: {String(value)}</label>
-    </div>
-  );
+3. Create `confirmation` function with `createConfirmation`. It accepts any props passed to your Dialog component:
+
+```js
+import { createConfirmation } from 'react-confirm-decorator';
+
+const confirmation = (props: Props): Promise<boolean> => {
+  return createConfirmation(ConfirmationModal, props);
 };
 ```
+
+4. Use `confirmation`. When `confirm` is fired, it will resolve `true`. When `abort` is fired, it will resolve `false`:
+
+```js
+const isConfirmed = await confirmation({
+  title: 'Title',
+  body: 'Body',
+});
+```
+
+Check more [examples](https://github.com/uraway/react-confirm-decorator/tree/master/src/stories) with Chakra UI, Material UI and React Bootstrap:

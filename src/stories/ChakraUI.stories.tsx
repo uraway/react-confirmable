@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { confirm } from './ChakraUI';
+import { confirmation } from './ChakraUI';
 import { FC, useState } from 'react';
 import {
   ChakraProvider,
@@ -12,7 +12,7 @@ const Sample: FC = () => {
   const [value, setValue] = useState(false);
 
   const handleClick = async () => {
-    const isConfirmed = await confirm({
+    const isConfirmed = await confirmation({
       title: 'Title',
       body: 'Body',
     });
@@ -28,9 +28,9 @@ const Sample: FC = () => {
       <Button id="toggle" onClick={handleClick} colorScheme="blue">
         Confirm
       </Button>
-      <label id="label" style={{ margin: '2rem' }}>
-        isConfirmed: {String(value)}
-      </label>
+      <div id="result" style={{ margin: '2rem' }}>
+        {value && 'Confirmed!!'}
+      </div>
       <Button onClick={toggleColorMode}>Switch to {text}</Button>
     </div>
   );
