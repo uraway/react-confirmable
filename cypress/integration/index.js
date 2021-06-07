@@ -12,7 +12,7 @@ context('Actions', () => {
   })
 
   it('ReactBootstrap', () => {
-    cy.visit('http://localhost:6006/iframe.html?id=example-reactboostrap');
+    cy.visit('http://localhost:6006/iframe.html?id=example-reactbootstrap');
 
     cy.get('[id="toggle"]').click();
     cy.get('[id="confirm"]').click();
