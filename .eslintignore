@@ -3,3 +3,4 @@ cypress
 rollup.config.js
 dist
 node_modules
+src/stories/
