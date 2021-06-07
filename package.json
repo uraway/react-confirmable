@@ -1,6 +1,6 @@
 {
   "name": "react-confirm-decorator",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "ReactConfirmDecorator",
   "keywords": [
     "react",
@@ -18,25 +18,27 @@
   },
   "license": "MIT",
   "files": [
-    "dist",
+    "dist/",
     "README.md"
   ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "scripts": {
-    "lint": "yarn prettier:check && yarn eslint:check",
-    "prettier:check": "prettier --check src",
-    "eslint:check": "eslint --cache src",
-    "predeploy": "yarn build-storybook",
-    "deploy": "gh-pages -d storybook-static",
-    "build": "rollup --config",
-    "rollup": "rollup --config --watch",
-    "tsc": "tsc --watch",
-    "start": "npm-run-all -p rollup tsc",
-    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "postinstall": "tsc"
+    "build:rollup": "rollup --config",
+    "build:tsc": "tsc",
+    "build": "npm-run-all -s build:tsc build:rollup",
+    "lint:eslint": "eslint --cache src",
+    "lint:prettier": "prettier --check src",
+    "lint": "npm-run-all -p lint:*",
+    "deploy": "gh-pages -d storybook-static",
+    "predeploy": "yarn build-storybook",
+    "prepare": "yarn build",
+    "start": "npm-run-all -p watch:*",
+    "storybook": "start-storybook -p 6006",
+    "watch:rollup": "rollup --config --watch",
+    "watch:tsc": "tsc --watch"
   },
   "dependencies": {},
   "devDependencies": {
@@ -73,6 +75,7 @@
     "prettier": "2.3.1",
     "react": "17.0.2",
     "react-bootstrap": "1.6.1",
+    "react-confirm-decorator": "1.0.4",
     "react-dom": "17.0.2",
     "rollup": "2.51.0",
     "storybook-addon-react-docgen": "1.2.42",

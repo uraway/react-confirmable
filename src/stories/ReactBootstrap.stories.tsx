@@ -28,6 +28,6 @@ export const Sample: FC = () => {
 };
 
 export default {
-  title: 'Example/ReactBoostrap',
+  title: 'Example/ReactBootstrap',
   component: Sample,
 } as Meta;
