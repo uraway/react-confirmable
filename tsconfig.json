@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ES6",
-    "strict": false,
     "target": "ES2015",
     "module": "ES2020",
     "strict": true,
@@ -18,5 +15,5 @@
     "declaration": true
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/stories"]
 }
