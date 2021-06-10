@@ -10066,7 +10066,7 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@^18.0.0-alpha-aecb3b6d1:
+react-dom@18.0.0-alpha-aecb3b6d1:
   version "18.0.0-alpha-aecb3b6d1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.0.0-alpha-aecb3b6d1.tgz#206f93536058c7121c368bc8021ad3dc58d947c7"
   integrity sha512-nKf9Mp/w+zho9Rlyb+O38byMRbcX2bJndxUH2kZrI3Zlzd3ZlClNpelWF86NISpEC3EBAESZJkIFPi23ORmhBw==
@@ -10257,7 +10257,7 @@ react-transition-group@^4.4.0, react-transition-group@^4.4.1:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^18.0.0-alpha-aecb3b6d1:
+react@18.0.0-alpha-aecb3b6d1:
   version "18.0.0-alpha-aecb3b6d1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.0.0-alpha-aecb3b6d1.tgz#755a18fb13bf0c8ca4ae56fd584188dfcef2e664"
   integrity sha512-Fw8/L4LVw0wzfhcPbeC/iAJRy2VEQ3AoyvihEXk+x9olXwj36b51VZnk6syycFcggLd6QaOcGcA6G5/yKIU2qw==
