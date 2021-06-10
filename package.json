@@ -42,9 +42,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "7.14.3",
+    "@babel/core": "7.14.5",
     "@babel/plugin-proposal-class-properties": "7.14.5",
-    "@babel/preset-env": "7.14.4",
+    "@babel/preset-env": "7.14.5",
     "@chakra-ui/react": "1.6.3",
     "@emotion/react": "11.4.0",
     "@emotion/styled": "11.3.0",
