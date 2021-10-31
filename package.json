@@ -57,7 +57,7 @@
     "@storybook/addon-toolbars": "6.3.4",
     "@storybook/react": "6.3.4",
     "@types/react": "17.0.14",
-    "@types/react-bootstrap": "0.32.26",
+    "@types/react-bootstrap": "0.32.28",
     "@types/react-dom": "17.0.9",
     "@typescript-eslint/eslint-plugin": "4.28.4",
     "@typescript-eslint/parser": "4.28.4",
