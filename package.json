@@ -76,10 +76,10 @@
     "gh-pages": "3.2.3",
     "npm-run-all": "4.1.5",
     "prettier": "2.5.1",
-    "react": "18.0.0-rc.1-next-f468816ef-20220225",
+    "react": "18.0.0-rc.2-next-b9de50d2f-20220308",
     "react-bootstrap": "2.2.0",
     "react-confirm-decorator": "1.0.4",
-    "react-dom": "18.0.0-rc.1-next-f468816ef-20220225",
+    "react-dom": "18.0.0-rc.2-next-b9de50d2f-20220308",
     "rollup": "2.70.0",
     "storybook-addon-react-docgen": "1.2.42",
     "typescript": "4.5.4"
