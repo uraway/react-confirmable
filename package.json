@@ -82,7 +82,7 @@
     "react-dom": "18.0.0-rc.2-next-b9de50d2f-20220308",
     "rollup": "2.70.1",
     "storybook-addon-react-docgen": "1.2.42",
-    "typescript": "4.5.4"
+    "typescript": "4.6.2"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0 || 18.0.0-alpha-aecb3b6d1",
