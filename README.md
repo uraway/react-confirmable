@@ -1,6 +1,6 @@
-# ReactConfirmDecorator
+# ReactConfirmable
 
-[![npm version](https://badge.fury.io/js/react-confirm-decorator.svg)](https://badge.fury.io/js/react-confirm-decorator) [![uraway](https://circleci.com/gh/uraway/react-confirm-decorator.svg?style=svg)](https://app.circleci.com/pipelines/github/uraway/react-confirm-decorator)
+[![npm version](https://badge.fury.io/js/react-confirmable.svg)](https://badge.fury.io/js/react-confirmable) [![uraway](https://circleci.com/gh/uraway/react-confirmable.svg?style=svg)](https://app.circleci.com/pipelines/github/uraway/react-confirmable)
 
 **High Order Component for Beautiful React Dialog**
 
@@ -17,12 +17,12 @@ const isConfirmed = await confirmation({
 });
 ```
 
-https://uraway.github.io/react-confirm-decorator
+https://uraway.github.io/react-confirmable
 
 ## Install
 
 ```
-yarn add react-confirm-decorator
+yarn add react-confirmable
 ```
 
 ## How to make your Dialog component to be callable
@@ -39,7 +39,7 @@ yarn add react-confirm-decorator
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { ReactNode } from 'react';
-import { WrappedComponentProps } from 'react-confirm-decorator';
+import { WrappedComponentProps } from 'react-confirmable';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -77,15 +77,15 @@ const BaseModal = ({
 2. Wrap your Dialog component with `withConfirmation`:
 
 ```js
-import { withConfirmation } from 'react-confirm-decorator';
+import { withConfirmation } from 'react-confirmable';
 
 const ConfirmationModal = withConfirmation(BaseModal);
 ```
 
-3. Create `confirmation` function with `createConfirmation`. It accepts any props passed to your Dialog component:
+3. Create `confirmation` function with `createConfirmation`. It accepts any props passing to your Dialog component:
 
 ```js
-import { createConfirmation } from 'react-confirm-decorator';
+import { createConfirmation } from 'react-confirmable';
 
 const confirmation = (props: Props): Promise<boolean> => {
   return createConfirmation(ConfirmationModal, props);
@@ -101,4 +101,8 @@ const isConfirmed = await confirmation({
 });
 ```
 
-Check more [examples](https://github.com/uraway/react-confirm-decorator/tree/master/src/stories) with Chakra UI, Material UI and React Bootstrap:
+Check more [examples](https://github.com/uraway/react-confirmable/tree/master/src/stories) with Chakra UI, Material UI and React Bootstrap:
+
+# License
+
+MIT License

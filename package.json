@@ -1,7 +1,7 @@
 {
-  "name": "react-confirm-decorator",
+  "name": "react-confirmable",
   "version": "1.0.4",
-  "description": "ReactConfirmDecorator",
+  "description": "React replacement for window.confirm API",
   "keywords": [
     "react",
     "component"
@@ -10,11 +10,11 @@
     "name": "Masato Urai",
     "url": "https://github.com/uraway"
   },
-  "homepage": "https://github.com/uraway/react-confirm-decorator",
-  "bugs": "https://github.com/uraway/react-confirm-decorator/issues",
+  "homepage": "https://github.com/uraway/react-confirmable",
+  "bugs": "https://github.com/uraway/react-confirmable/issues",
   "repository": {
     "type": "git",
-    "url": "git://github.com/uraway/react-confirm-decorator.git"
+    "url": "git://github.com/uraway/react-confirmable.git"
   },
   "license": "MIT",
   "files": [
@@ -78,7 +78,7 @@
     "prettier": "2.6.1",
     "react": "18.0.0-rc.3-next-de516ca5a-20220321",
     "react-bootstrap": "2.2.2",
-    "react-confirm-decorator": "1.0.4",
+    "react-confirmable": "1.0.4",
     "react-dom": "18.0.0-rc.3-next-de516ca5a-20220321",
     "rollup": "2.70.1",
     "storybook-addon-react-docgen": "1.2.42",
