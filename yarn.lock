@@ -11360,10 +11360,10 @@ react-colorful@^5.1.2:
   resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.2.2.tgz#0a69d0648db47e51359d343854d83d250a742243"
   integrity sha512-Xdb1Rl6lZ5SMdNBH59eE0lGqR1g2LVD8IgPlw0WeMDrOC65lYI8fgMEwj/0dDpVRVMh5qp73ciISDst/t2O2iQ==
 
-react-confirm-decorator@1.0.4:
+react-confirmable@1.0.4:
   version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-confirm-decorator/-/react-confirm-decorator-1.0.4.tgz#02e959fbc322b0913bc5cfcb480cfb95e2437881"
-  integrity sha512-+gHE5EqqQscKgGB7v00vlf7g31HvbfdaxXiS6HFO7eYlw7gm0EM3cr2J3StY3WwqWbs85wgVEF9VSUEcur92/A==
+  resolved "https://registry.yarnpkg.com/react-confirmable/-/react-confirmable-1.0.4.tgz#5d1d1d7ccd4b8186180418fc4e49829df5767991"
+  integrity sha512-NfiiFaMK7Pg1NksiyoxqyiwMsWvEqm5o9Plqqnd2VZ/2pPslbNUQokPGleC/QuNl4Ng3rDyzzK6XA7YAXYnkaA==
 
 react-docgen-typescript@^2.0.0:
   version "2.0.0"
